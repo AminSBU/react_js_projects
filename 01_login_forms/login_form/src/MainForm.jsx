@@ -8,8 +8,14 @@ function MainForm(){
         <>
             <div className="main-form-container">
                 <h2>Register/Login Form</h2>
-                <input type="text" value={username} placeholder="type your username ..."></input>
-                <input type="password" value={password} placeholder="type your password ..."></input>
+                <div className="username">
+                    <label for="username">Username: </label>
+                    <input type="text" id="username" value={username} placeholder="type your username ..."></input>
+                </div>
+                <div className="password">
+                    <label for="password">Password: </label>
+                    <input type="password" value={password} placeholder="type your password ..."></input>
+                </div>
             </div>
         </>
     );
