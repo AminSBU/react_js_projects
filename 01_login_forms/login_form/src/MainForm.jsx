@@ -10,12 +10,13 @@ function MainForm(){
             <div className="main-form-container">
                 <h2>Register/Login Form</h2>
                 <div className="username-container">
-                    <label for="username">Username: </label>
                     <input type="text" id="username" className="username" value={username} placeholder="type your username ..."></input>
                 </div>
                 <div className="password-container">
-                    <label for="password">Password: </label>
                     <input type="password" id="password" className="password" value={password} placeholder="type your password ..."></input>
+                </div>
+                <div className="send-button-container">
+                    <button className="sendButton">Send</button>
                 </div>
             </div>
         </>
