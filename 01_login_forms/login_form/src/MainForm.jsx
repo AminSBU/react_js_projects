@@ -16,7 +16,7 @@ function MainForm(){
                     <input type="password" id="password" className="password" value={password} placeholder="type your password ..."></input>
                 </div>
                 <div className="send-button-container">
-                    <button className="sendButton">Send</button>
+                    <button className="sendButton">Login</button>
                 </div>
             </div>
         </>
