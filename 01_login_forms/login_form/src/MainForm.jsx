@@ -8,7 +8,7 @@ function MainForm(){
     return(
         <>
             <div className="main-form-container">
-                <h2>Register/Login Form</h2>
+                <h2 className="text-login">Register/Login Form</h2>
                 <div className="username-container">
                     <input type="text" id="username" className="username" value={username} placeholder="type your username ..."></input>
                 </div>
