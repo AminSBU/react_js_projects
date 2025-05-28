@@ -1,0 +1,21 @@
+.username{
+    height: 2.5rem;
+    outline: none;
+    border-radius: 0.5rem;
+    padding-left: 2.5rem;
+    background-image: url('../img/user-icon.png');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 0.5rem center;
+}
+
+.password{
+    height: 2.5rem;
+    outline: none;
+    border-radius: 0.5rem;
+    padding-left: 2.5rem;
+    background-image: url('../img/password-icon.png');
+    background-repeat: no-repeat;
+    background-size: 24px 24px;
+    background-position: 0.5rem center;
+}
