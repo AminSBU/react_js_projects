@@ -5,6 +5,16 @@ function MainForm(){
     const [username, setUsername] = useState();
     const [password, setPassword] = useState();
 
+    const handleLogin = async () => {
+    const response = await fetch('http://localhost:5000/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password }),
+        });
+        const data = await response.json();
+        alert(data.message);
+    };
+
     return(
         <>
             <div className="main-form-container">
@@ -16,7 +26,7 @@ function MainForm(){
                     <input type="password" id="password" className="password" value={password} placeholder="type your password ..."></input>
                 </div>
                 <div className="send-button-container">
-                    <button className="sendButton">Login</button>
+                    <button className="sendButton" onClick={handleLogin}>Login</button>
                 </div>
             </div>
         </>

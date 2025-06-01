@@ -1,12 +1,22 @@
+.main-form-container{
+    padding: 20px;
+    border-radius: 10px;
+    border-width: 0.1rem;
+    outline: none;
+    border-style: solid;
+}
+
 .username{
     height: 2.5rem;
     outline: none;
     border-radius: 0.5rem;
+    background-color: transparent;
     padding-left: 2.5rem;
     background-image: url('../img/user-icon.png');
     background-repeat: no-repeat;
     background-size: 24px 24px;
     background-position: 0.5rem center;
+    padding-left: 2rem;
 }
 
 .password{
@@ -14,10 +24,12 @@
     outline: none;
     border-radius: 0.5rem;
     padding-left: 2.5rem;
+    background-color: transparent;
     background-image: url('../img/password-icon.png');
     background-repeat: no-repeat;
     background-size: 24px 24px;
     background-position: 0.5rem center;
+    padding-left: 2rem;
 }
 
 .sendButton
@@ -27,7 +39,7 @@
 }
 
 .text-login {
-    font-size: 4rem;
+    font-size: 1rem;
     color: #fff;
     text-shadow: 0 0 5px #ff005e, 0 0 10px #ff005e, 0 0 20px #ff005e, 0 0 40px #ff005e, 0 0 80px #ff005e;
     animation: glow 1.5s infinite alternate;
