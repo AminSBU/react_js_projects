@@ -21,7 +21,7 @@ app.post('/api/auth', async (req, res) => {
   // Check if user exists (for login)
   try {
     const result = await pool.query(
-      'SELECT * FROM login_users WHERE username = $1',
+      'SELECT * FROM public.login_users WHERE username = $1',
       [username]
     );
 
@@ -35,7 +35,7 @@ app.post('/api/auth', async (req, res) => {
     } else {
       // For register: insert new user
       await pool.query(
-        'INSERT INTO login_users (username, password) VALUES ($1, $2)',
+        'INSERT INTO public.login_users (username, password) VALUES ($1, $2)',
         [username, password]
       );
       res.json({ message: 'Registration successful' });
