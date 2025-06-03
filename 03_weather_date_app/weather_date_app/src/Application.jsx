@@ -25,6 +25,8 @@ function Application(){
       .catch(error => console.error('Error:', error));
   }, []);
 
+    const temperature = weather ? Math.floor(weather.current.temp_c) : null;
+    
     return(
         <>
             
@@ -33,7 +35,7 @@ function Application(){
                 {weather ? (
                 <>
                     <p>Location: {weather.location.name}</p>
-                    <p>Temperature: {weather.current.temp_c} °C</p>
+                    <p>Temperature: {temperature} °C</p>
                     <p>Condition: {weather.current.condition.text}</p>
 
                     {weather.current.temp_c < 30 ? (
