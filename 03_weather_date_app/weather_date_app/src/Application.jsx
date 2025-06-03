@@ -35,7 +35,7 @@ function Application(){
                 {weather ? (
                 <>
                     <p>Location: {weather.location.name}</p>
-                    <p>Temperature: {temperature} °C</p>
+                    <p>{englishToPersianDigits(temperature.toString())} °C</p>
                     <p>Condition: {weather.current.condition.text}</p>
 
                     {weather.current.temp_c < 30 ? (
