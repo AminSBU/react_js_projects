@@ -32,20 +32,20 @@ function Application(){
             
 
             <div className="weather-container">
-                {weather ? (
-                <>
-                    <p className="number-style">{englishToPersianDigits(temperature.toString())} °C</p>
-                    <p>Condition: {weather.current.condition.text}</p>
+            
 
-                    {weather.current.temp_c < 30 ? (
-                        <img src='./img/partly_cloudy_weather_with_the_sun.png' className="pcws"/>
+            {weather ? (
+                <div className="weather-info">
+                    {weather.current.condition.text === "Cloudy" ? (
+                        <img src='./img/Cloudy.png' className="pcws"/>
                     ) : (
                         <img src='./img/showers_with_sun.png' className="pcws" />
                     )}
-                </>
-                ) : (
+                    <p className="number-style">{englishToPersianDigits(temperature.toString())} °C</p>
+                </div>
+            ) : (
                 <p>Loading weather...</p>
-                )}
+            )}
             </div>
         </>
     );

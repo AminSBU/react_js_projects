@@ -3,14 +3,20 @@
     border: 2px solid black;
 }
 
+.weather-info {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* optional, for spacing between text and image */
+}
+
 .number-style
 {
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: bold;
     color: rgb(226, 17, 59);
 }
 
 .pcws{
-    width: 100px;
+    width: 200px;
     height: 100px;
 }
