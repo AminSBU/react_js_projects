@@ -1,4 +1,4 @@
-.app-container{
+.weather-container{
     border-radius: 10px;
     border: 2px solid black;
 }
@@ -7,7 +7,7 @@
 {
     font-size: 5rem;
     font-weight: bold;
-    color: orange;
+    color: rgb(226, 17, 59);
 }
 
 .pcws{

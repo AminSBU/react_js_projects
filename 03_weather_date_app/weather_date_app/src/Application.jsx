@@ -34,8 +34,7 @@ function Application(){
             <div className="weather-container">
                 {weather ? (
                 <>
-                    <p>Location: {weather.location.name}</p>
-                    <p>{englishToPersianDigits(temperature.toString())} °C</p>
+                    <p className="number-style">{englishToPersianDigits(temperature.toString())} °C</p>
                     <p>Condition: {weather.current.condition.text}</p>
 
                     {weather.current.temp_c < 30 ? (
