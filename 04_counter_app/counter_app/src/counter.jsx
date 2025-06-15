@@ -8,6 +8,11 @@ function Counter(){
             <div className="counter-app-container">
                 <h2>Counter App</h2>
                 <p>{count}</p>
+                <div className="counter-buttons">
+                    <button>+</button>
+                    <button>-</button>
+                    <button>R</button>
+                </div>
             </div>
         </>
     );
