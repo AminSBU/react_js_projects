@@ -1,9 +1,19 @@
-.task-container{
+.task-container {
     border: 2px solid black;
     padding: 10px;
     border-radius: 10px;
-    
+    width: 400px;        /* fixed width */
+    height: 300px;       /* fixed height */
+    overflow-y: auto;    /* allows scrolling if content overflows vertically */
+    overflow-x: hidden;  /* hides horizontal overflow */
 }
+
+.task-display {
+    max-height: 180px;   /* adjust this based on the space you want for the tasks */
+    overflow-y: auto;    /* enables vertical scroll if needed */
+    margin-bottom: 10px; /* adds space between task list and input/button */
+}
+
 
 .task-send-button{
     width: 70px;
