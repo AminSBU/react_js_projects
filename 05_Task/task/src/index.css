@@ -13,6 +13,11 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+@font-face {
+  font-family: 'Homa';
+  src: local('Homa'), url(./fonts/Homa.ttf) format('truetype');
+}
+
 a {
   font-weight: 500;
   color: #646cff;
@@ -28,6 +33,7 @@ body {
   place-items: center;
   min-width: 320px;
   min-height: 100vh;
+  font-family: Homa;
 }
 
 h1 {

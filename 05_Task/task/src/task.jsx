@@ -15,7 +15,12 @@ function Task() {
         <>
             <div className="task-container">
                 <p>دستنویس</p>
-
+                {/* Display each task in a new line */}
+                <div className="task-display">
+                    {tasks.map((task, index) => (
+                        <p key={index}>Task {index + 1}: {task}</p>
+                    ))}
+                </div>
                 <input 
                     type="text" 
                     className="task-input"
@@ -26,12 +31,7 @@ function Task() {
                     ارسال
                 </button>
 
-                {/* Display each task in a new line */}
-                <div className="task-display">
-                    {tasks.map((task, index) => (
-                        <p key={index}>Task {index + 1}: {task}</p>
-                    ))}
-                </div>
+                
             </div>
         </>
     );
