@@ -1,9 +1,17 @@
 import React, { useState } from "react";
 import './task.css';
+import moment from 'jalali-moment'
+
+
+
 
 function Task() {
     const [tasks, setTasks] = useState([]); // use an array to store multiple tasks
     const [input, setInput] = useState("");
+
+    const now = moment().locale('fa'); // Set locale to Persian
+    const jalaliDate = now.format('jYYYY/jMM/jDD'); // Format as Jalali
+
 
     function SendTaskHandler() {
         if (input.trim() === "") return; // ignore empty input
@@ -15,6 +23,8 @@ function Task() {
         <>
             <div className="task-container">
                 <p>دستنویس</p>
+                
+                <div>تاریخ امروز: {jalaliDate}</div>
                 {/* Display each task in a new line */}
                 <div className="task-display">
                     {tasks.map((task, index) => (
