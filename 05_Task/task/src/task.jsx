@@ -7,7 +7,7 @@ function Task() {
 
     function SendTaskHandler() {
         if (input.trim() === "") return; // ignore empty input
-        setTasks([...tasks, input]);     // add new task to the array
+        setTasks([input, ...tasks])      // add new task to the array
         setInput("");                    // clear input field after adding
     }
 
@@ -27,6 +27,7 @@ function Task() {
                     value={input}
                     onChange={(e) => setInput(e.target.value)}
                 />
+                <input type="date"></input>
                 <button className="task-send-button" onClick={SendTaskHandler}>
                     ارسال
                 </button>
