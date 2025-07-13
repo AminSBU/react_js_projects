@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login and Test Database</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; background-color: #f4f4f4; }
+        .container { max-width: 500px; margin: 50px auto; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1 { text-align: center; color: #333; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; color: #555; font-weight: bold; }
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box; /_ Include padding in width _/
+        }
+        button[type="submit"] {
+            width: 100%;
+            padding: 12px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+        button[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        #result { margin-top: 20px; padding: 15px; border: 1px solid #ccc; min-height: 50px; border-radius: 4px; background-color: #e9ecef; }
+        .success { color: green; border-color: #28a745; background-color: #d4edda; }
+        .error { color: red; border-color: #dc3545; background-color: #f8d7da; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Login and Test Database</h1>
+
+        <form id="loginTestForm">
+            <div class="form-group">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit">Login and Test Connection</button>
+        </form>
+
+        <div id="result">
+            Enter your username and password to test.
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('loginTestForm');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            resultDiv.innerHTML = 'Testing connection...';
+            resultDiv.className = ''; // Reset class
+
+            try {
+                // Send username and password to the backend API endpoint
+                const response = await fetch('/login-test-db', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({ username, password }),
+                });
+
+                const data = await response.json();
+
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <p class="success"><strong>Connection Successful!</strong></p>
+                        <p>Welcome, ${username}!</p>
+                        <p>Database 'postgres' table 'test_table' is accessible.</p>
+                        <p>Found ${data.rowCount} records.</p>
+                        <p><strong>Sample Data:</strong></p>
+                        <ul>
+                            ${data.sampleData.map(row => `<li>ID: ${row.id}, Username: ${row.username}</li>`).join('')}
+                        </ul>
+                    `;
+                    resultDiv.className = 'success';
+                } else {
+                    resultDiv.innerHTML = `<p class="error"><strong>Error:</strong> ${data.message}</p>`;
+                    resultDiv.className = 'error';
+                }
+            } catch (error) {
+                console.error('Error during fetch:', error);
+                resultDiv.innerHTML = `<p class="error"><strong>Error:</strong> Could not connect to backend or an unexpected error occurred.</p>`;
+                resultDiv.className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>

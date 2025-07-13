@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PostgreSQL Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        #result { margin-top: 20px; padding: 10px; border: 1px solid #ccc; min-height: 50px; }
+        .success { color: green; }
+        .error { color: red; }
+    </style>
+</head>
+<body>
+    <h1>PostgreSQL Database Test</h1>
+
+    <form id="dbTestForm">
+        <button type="submit">Test Database Connection and Fetch Data</button>
+    </form>
+
+    <div id="result">
+        Waiting for test...
+    </div>
+
+    <script>
+        const form = document.getElementById('dbTestForm');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault(); // Prevent default form submission
+            resultDiv.innerHTML = 'Testing connection...';
+            resultDiv.className = ''; // Reset class
+
+            try {
+                const response = await fetch('/test-db'); // Call our backend endpoint
+                const data = await response.json(); // Parse the JSON response from the backend
+
+                if (data.success) {
+                    resultDiv.innerHTML = `
+                        <p class="success"><strong>Connection Successful!</strong></p>
+                        <p><strong>Table:</strong> ${data.tableName}</p>
+                        <p><strong>Number of records found:</strong> ${data.rowCount}</p>
+                        <p><strong>Sample Data:</strong></p>
+                        <ul>
+                            ${data.sampleData.map(row => `<li>ID: ${row.id}, Username: ${row.username}</li>`).join('')}
+                        </ul>
+                    `;
+                    resultDiv.className = 'success';
+                } else {
+                    resultDiv.innerHTML = `<p class="error"><strong>Error:</strong> ${data.message}</p>`;
+                    resultDiv.className = 'error';
+                }
+            } catch (error) {
+                console.error('Error during fetch:', error);
+                resultDiv.innerHTML = `<p class="error"><strong>Error:</strong> Could not connect to backend or an unexpected error occurred.</p>`;
+                resultDiv.className = 'error';
+            }
+        });
+    </script>
+</body>
+</html>
