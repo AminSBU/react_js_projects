@@ -5,7 +5,7 @@ function QForm()
 {
     return(
         <>
-            <h1> this is Quiz App</h1>
+            <div className="quiz_container"> </div>
         </>
     );
 }
