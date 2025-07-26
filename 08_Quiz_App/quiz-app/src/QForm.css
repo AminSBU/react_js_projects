@@ -1,6 +1,14 @@
 .quiz_container{
     border: 2px solid black;
     width: 500px;
-    height: 200px;
+    height: 300px;
     border-radius: 20px;
+}
+
+.question{
+    margin-bottom: 8px;
+}
+
+.qbtn{
+    width: 400px;
 }
