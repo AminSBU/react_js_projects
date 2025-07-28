@@ -12,3 +12,8 @@
 .qbtn{
     width: 400px;
 }
+
+.result {
+  margin-top: 20px;
+  font-weight: bold;
+}
