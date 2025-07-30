@@ -7,11 +7,13 @@ body {
     display: flex; /* Use flex for layout */
     justify-content: center; /* Center children horizontally */
     align-items: center; /* Center children vertically */
+    grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+    grid-template-rows: 1fr; /* Single row to fit 80px height */
     position: fixed;
     top: 0;
     left: 50%;
     transform: translateX(-50%); /* Center horizontally */
-    width: 600px;
+    width: 700px;
     height: 80px;
     gap: 8px;
     border: 2px solid black;
@@ -26,7 +28,7 @@ body {
 }
 
 .img-header {
-    width: 170px;
+    width: 200px;
     height: 70px;
     border-radius: 10px;
 }
