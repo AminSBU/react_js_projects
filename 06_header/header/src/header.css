@@ -1,22 +1,31 @@
+body {
+    margin: 0; /* Remove default body margin */
+}
+
 .parent {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
+    margin-top: 20px;
+    display: flex; /* Use flex for layout */
+    justify-content: center; /* Center children horizontally */
+    align-items: center; /* Center children vertically */
+    position: fixed;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%); /* Center horizontally */
+    width: 600px;
+    height: 80px;
     gap: 8px;
     border: 2px solid black;
     border-radius: 20px;
-    width: 600px;
-    height: 80px;
     padding: 10px;
     background-color: rgb(206, 205, 205);
+    z-index: 1000; /* Ensure it’s above other content */
 }
 
-.header-btn{
+.header-btn {
     background-color: rgb(206, 205, 205);
 }
 
-.img-header
-{
+.img-header {
     width: 170px;
     height: 70px;
     border-radius: 10px;
