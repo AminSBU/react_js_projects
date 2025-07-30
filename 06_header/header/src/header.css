@@ -1,6 +1,23 @@
 .parent {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(3, 1fr);
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 1fr);
     gap: 8px;
+    border: 2px solid black;
+    border-radius: 20px;
+    width: 600px;
+    height: 80px;
+    padding: 10px;
+    background-color: rgb(206, 205, 205);
+}
+
+.header-btn{
+    background-color: rgb(206, 205, 205);
+}
+
+.img-header
+{
+    width: 170px;
+    height: 70px;
+    border-radius: 10px;
 }
