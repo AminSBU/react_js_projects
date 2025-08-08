@@ -1,31 +1,40 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, use } from 'react';
 
 function ShowIP() {
-  const [ip, setIp] = useState(null);
-  const [error, setError] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [ip, setIp] = useState(0);
+  const [country, setCountry] = useState(null);
+  const [error, setError] = useState(0);
 
-  useEffect(() => {
-    async function fetchIp() {
-      try {
-        const response = await fetch('https://api.ipify.org?format=json');
-        if (!response.ok) {
-          throw new Error(`HTTP error! status: ${response.status}`);
+  useEffect(() =>{
+    async function IpDetails() {
+        try
+        {
+            const getIpURL = 'https://api.ipify.org?format=json';
+            const Response = await fetch(getIpURL);
+            if(!Response.ok)
+            {
+                throw new Error('HTTP ERROR fetching ...');
+            }
+            const ipData = await Response.json();
+            setIp(ipData.ip);
+
+            console.log(ipData.ip);
+
+            const getIpDescriptionURL = `http://ip-api.com/json/${ipData.ip}`;
+            const DescResponse = await fetch(getIpDescriptionURL);
+            if(!DescResponse.ok)
+            {
+                throw new Error('HTTP ERROR fetching ...');
+            }
+            const ipDescription = await DescResponse.json();
+            setCountry(ipDescription.country);
         }
-        const data = await response.json();
-        setIp(data.ip);
-      } catch (err) {
-        setError(err.message);
-      } finally {
-        setLoading(false);
-      }
+        catch(err)
+        {
+            setError(err.message);
+        }
     }
-
-    fetchIp();
   }, []);
-
-  if (loading) return <div>Loading your IP address...</div>;
-  if (error) return <div>Error: {error}</div>;
 
   return (
     <div>
